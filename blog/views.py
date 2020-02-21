@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from blog.models import Post
+from .forms import CommentForm
+
 
 from blog.forms import CommentForm
 from blog.models import Post, Comment
@@ -32,7 +35,6 @@ def blog_detail(request, pk):
                 post=post,
             )
             comment.save()
-            
     comments = Comment.objects.filter(post=post)
     context = {
         "post": post,
